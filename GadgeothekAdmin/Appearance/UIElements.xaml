@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:GadgeothekAdmin">
+
+    <Style x:Key="ButtonMenuStyle" TargetType="Button">
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Foreground" Value="#ff1ba1e2" />
+        <Setter Property="BorderBrush" Value="#ff1ba1e2" />
+        <Setter Property="Background" Value="{StaticResource MenuBackBrush}" />
+        <Setter Property="FontSize" Value="50" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button" >
+                    <Grid>
+                        <Ellipse Fill="{TemplateBinding Background}" Stroke="{TemplateBinding Foreground}" StrokeThickness="1"/>
+                        <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff1ba1e2" />
+                <Setter Property="Foreground" Value="{StaticResource MenuBackBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

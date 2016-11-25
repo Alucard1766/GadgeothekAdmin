@@ -4,10 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GadgeothekAdmin"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Background="Pink"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Gadgeothek Admin" MinHeight="350" MinWidth="525" WindowState="Maximized">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Appearance\UIElements.xaml" />
+                <ResourceDictionary Source="Appearance\Layouts.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Style="{StaticResource PanelMenuStyle}">
+            <Button Style="{StaticResource ButtonMenuStyle}">
+                <fa:FontAwesome Icon="Mobile" />
+            </Button>
+            <Button Style="{StaticResource ButtonMenuStyle}">
+                <fa:FontAwesome Icon="Exchange" />
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:GadgeothekAdmin"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Appearance\Colors.xaml" />
+                <ResourceDictionary Source="Appearance\Brushes.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
