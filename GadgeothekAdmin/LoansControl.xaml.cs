@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace GadgeothekAdmin
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoansControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoansControl : UserControl
     {
-        public MainWindow()
+        public LoansControl()
         {
             InitializeComponent();
-        }
-
-        private void btnMenuLoan_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -29,11 +29,13 @@
 
         <StackPanel Style="{StaticResource PanelMenuStyle}">
             <Button Style="{StaticResource ButtonMenuStyle}">
-                <fa:FontAwesome Icon="Mobile" />
+                <fa:FontAwesome x:Name="btnMenuGadgets" Icon="Mobile" />
             </Button>
-            <Button Style="{StaticResource ButtonMenuStyle}">
+            <Button x:Name="btnMenuLoan" Style="{StaticResource ButtonMenuStyle}" Click="btnMenuLoan_Click">
                 <fa:FontAwesome Icon="Exchange" />
             </Button>
         </StackPanel>
+        
+        
     </Grid>
 </Window>

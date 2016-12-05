@@ -6,8 +6,8 @@
         <Setter Property="Width" Value="100" />
         <Setter Property="Height" Value="100" />
         <Setter Property="Margin" Value="10" />
-        <Setter Property="Foreground" Value="#ff1ba1e2" />
-        <Setter Property="BorderBrush" Value="#ff1ba1e2" />
+        <Setter Property="Foreground" Value="{StaticResource HighlightBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
         <Setter Property="Background" Value="{StaticResource MenuBackBrush}" />
         <Setter Property="FontSize" Value="50" />
 
@@ -24,7 +24,7 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#ff1ba1e2" />
+                <Setter Property="Background" Value="{StaticResource HighlightBrush}" />
                 <Setter Property="Foreground" Value="{StaticResource MenuBackBrush}" />
             </Trigger>
         </Style.Triggers>

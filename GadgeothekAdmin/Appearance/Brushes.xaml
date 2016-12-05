@@ -3,5 +3,6 @@
                     xmlns:local="clr-namespace:GadgeothekAdmin.Appearance">
 
     <SolidColorBrush x:Key="MenuBackBrush" Color="{StaticResource MenuBackColor}" />
+    <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}" />
 
 </ResourceDictionary>
