@@ -28,6 +28,8 @@ namespace GadgeothekAdmin
             isGadgetsVisible = false;
             isLoansVisible = true;
             InitializeComponent();
+
+
         }
     }
 }
