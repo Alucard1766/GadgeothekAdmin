@@ -10,6 +10,7 @@
 
     <Window.Resources>
         <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Appearance\UIElements.xaml" />
                 <ResourceDictionary Source="Appearance\Layouts.xaml" />

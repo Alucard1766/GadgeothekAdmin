@@ -25,6 +25,8 @@ namespace GadgeothekAdmin
 
         public MainWindow()
         {
+            isGadgetsVisible = false;
+            isLoansVisible = true;
             InitializeComponent();
         }
     }
