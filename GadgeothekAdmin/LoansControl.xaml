@@ -9,13 +9,13 @@
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="LoansTemplate" DataType="local:LoansControl">
+            <DataTemplate x:Key="LoansTemplate">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="64"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Content="{Binding Id}" Grid.Column="1"  VerticalContentAlignment="Center" />
+                    <Label Content="{Binding Gadget.Name}" Grid.Column="1"  VerticalContentAlignment="Center" />
                 </Grid>
             </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
@@ -28,7 +28,7 @@
 
     <Grid>
         <ListBox Name="LoansListBox"
-                 ItemsSource="{Binding LoansItems}" 
+                 ItemsSource="{Binding LoansItem}" 
                  ItemTemplate="{StaticResource LoansTemplate}" />
     </Grid>
 </UserControl>

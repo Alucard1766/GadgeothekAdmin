@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.Configuration;
 
 namespace GadgeothekAdmin
 {
@@ -23,12 +24,15 @@ namespace GadgeothekAdmin
         public LoansControl()
         {
             InitializeComponent();
-            DataContext = LoansItem;
+            DataContext = this;
+            InitializeList();
         }
 
         public void InitializeList()
         {
-            var service = new LibraryAdminService("http://localhost:8080");
+            LoansItem = new ObservableCollection<Loan>();
+            var url = ConfigurationManager.AppSettings["server"];
+            var service = new LibraryAdminService(url);
             List<Loan> loans = service.GetAllLoans();
             foreach (Loan l in loans)
             {
