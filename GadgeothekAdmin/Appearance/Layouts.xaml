@@ -8,8 +8,9 @@
         <Setter Property="Background" Value="{StaticResource MenuBackBrush}" />
     </Style>
 
-    <Style x:Key="PanelMainWindowStyle" TargetType="StackPanel">
+    <Style x:Key="PanelMainWindowStyle" TargetType="UserControl">
         <Setter Property="Grid.Column" Value="1"/>
+        <Setter Property="Margin" Value="30, 30, 0, 0" />
     </Style>
 
 </ResourceDictionary>

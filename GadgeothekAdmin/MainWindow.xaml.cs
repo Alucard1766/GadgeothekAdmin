@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,18 +19,67 @@ namespace GadgeothekAdmin
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private bool isLoansVisible;
-        private bool isGadgetsVisible;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool _isLoansVisible;
+
+        public bool IsLoansVisible
+        {
+            get { return _isLoansVisible; }
+            set
+            {
+                _isGadgetsVisible = !value;
+                SetProperty(ref _isLoansVisible, value, nameof(IsLoansVisible), nameof(IsGadgetsVisible));
+            }
+        }
+
+        private bool _isGadgetsVisible;
+
+        public bool IsGadgetsVisible
+        {
+            get { return _isGadgetsVisible; }
+            set
+            {
+                _isLoansVisible = !value;
+                SetProperty(ref _isGadgetsVisible, value, nameof(IsLoansVisible), nameof(IsGadgetsVisible));
+            }
+        }
+
 
         public MainWindow()
         {
-            isGadgetsVisible = false;
-            isLoansVisible = true;
+            DataContext = this;
+            IsGadgetsVisible = false;
+            IsLoansVisible = true;
+
             InitializeComponent();
+        }
 
 
+
+        private void SetProperty<T>(ref T field, T value, string name, string otherName)
+        {
+            field = value;
+            OnPropertyChanged(name);
+            OnPropertyChanged(otherName);
+        }
+
+        protected void OnPropertyChanged(string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private void btnMenuLoan_Click(object sender, RoutedEventArgs e)
+        {
+            IsLoansVisible = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            IsGadgetsVisible = true;
         }
     }
 }

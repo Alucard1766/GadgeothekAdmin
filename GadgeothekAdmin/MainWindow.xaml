@@ -29,21 +29,19 @@
         </Grid.RowDefinitions>
 
         <StackPanel Style="{StaticResource PanelMenuStyle}">
-            <Button Style="{StaticResource ButtonMenuStyle}">
+            <Button Style="{StaticResource ButtonMenuStyle}" Click="Button_Click">
                 <fa:FontAwesome x:Name="btnMenuGadgets" Icon="Mobile" />
             </Button>
             <Button x:Name="btnMenuLoan" Style="{StaticResource ButtonMenuStyle}" Click="btnMenuLoan_Click">
-                <fa:FontAwesome Icon="Exchange" />
+                <fa:FontAwesome x:Name="btnMenuLoans" Icon="Exchange" />
             </Button>
         </StackPanel>
 
-        <local:LoansControl Grid.Column="1" Visibility="Hidden">
-            
-        </local:LoansControl>
+        <local:LoansControl Visibility="{Binding IsLoansVisible, Converter={StaticResource VisibilityConverter}}"
+                            Style="{StaticResource PanelMainWindowStyle}" />
 
-        <local:GadgetsControl Grid.Column="1" Visibility="Visible">
-
-        </local:GadgetsControl>
+        <local:GadgetsControl Visibility="{Binding IsGadgetsVisible, Converter={StaticResource VisibilityConverter}}"
+                              Style="{StaticResource PanelMainWindowStyle}" />
 
     </Grid>
 </Window>
