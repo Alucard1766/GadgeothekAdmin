@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GadgeothekAdmin.LoansControl"
+﻿<UserControl x:Class="GadgeothekAdmin.GadgetsControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,17 +6,7 @@
              xmlns:local="clr-namespace:GadgeothekAdmin"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Appearance\UIElements.xaml" />
-                <ResourceDictionary Source="Appearance\Layouts.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
-
     <StackPanel>
-        <TextBlock>Hallo</TextBlock>
+        <TextBlock>Gadgets</TextBlock>
     </StackPanel>
 </UserControl>

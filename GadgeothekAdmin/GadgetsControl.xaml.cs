@@ -16,14 +16,11 @@ using System.Windows.Shapes;
 namespace GadgeothekAdmin
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GadgetsControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GadgetsControl : UserControl
     {
-        private bool isLoansVisible;
-        private bool isGadgetsVisible;
-
-        public MainWindow()
+        public GadgetsControl()
         {
             InitializeComponent();
         }

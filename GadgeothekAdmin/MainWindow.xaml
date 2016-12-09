@@ -35,7 +35,14 @@
                 <fa:FontAwesome Icon="Exchange" />
             </Button>
         </StackPanel>
-        
-        
+
+        <local:LoansControl Grid.Column="1" Visibility="Hidden">
+            
+        </local:LoansControl>
+
+        <local:GadgetsControl Grid.Column="1" Visibility="Visible">
+
+        </local:GadgetsControl>
+
     </Grid>
 </Window>
