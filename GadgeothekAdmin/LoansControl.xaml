@@ -9,14 +9,26 @@
 
     <UserControl.Resources>
         <ResourceDictionary>
+            <DataTemplate x:Key="LoansTemplate" DataType="local:LoansControl">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="64"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="{Binding Id}" Grid.Column="1"  VerticalContentAlignment="Center" />
+                </Grid>
+            </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Appearance\UIElements.xaml" />
                 <ResourceDictionary Source="Appearance\Layouts.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+
     </UserControl.Resources>
 
-    <StackPanel>
-        <TextBlock>Hallo</TextBlock>
-    </StackPanel>
+    <Grid>
+        <ListBox Name="LoansListBox"
+                 ItemsSource="{Binding LoansItems}" 
+                 ItemTemplate="{StaticResource LoansTemplate}" />
+    </Grid>
 </UserControl>
