@@ -20,6 +20,7 @@ namespace GadgeothekAdmin
     public partial class LoansControl : UserControl
     {
         public ObservableCollection<Loan> LoansItem { get; set; }
+        public int ItemsCount => LoansItem?.Count ?? 0;
 
         public LoansControl()
         {
@@ -28,7 +29,7 @@ namespace GadgeothekAdmin
             InitializeList();
         }
 
-        public void InitializeList()
+        private void InitializeList()
         {
             LoansItem = new ObservableCollection<Loan>();
             var url = ConfigurationManager.AppSettings["server"];

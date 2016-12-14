@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GadgeothekAdmin"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="Gadgeothek Admin" MinHeight="350" MinWidth="525" WindowState="Maximized">
+        Title="Gadgeothek Admin" MinHeight="350" MinWidth="900" WindowState="Maximized">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -28,7 +28,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Style="{StaticResource PanelMenuStyle}">
+        <StackPanel Style="{StaticResource PanelMenuStyle}" Grid.Column="0" Grid.Row="0">
             <Button Style="{StaticResource ButtonMenuStyle}" Click="Button_Click">
                 <fa:FontAwesome x:Name="btnMenuGadgets" Icon="Mobile" />
             </Button>
@@ -37,11 +37,11 @@
             </Button>
         </StackPanel>
 
-        <local:LoansControl Visibility="{Binding IsLoansVisible, Converter={StaticResource VisibilityConverter}}"
-                            Style="{StaticResource PanelMainWindowStyle}" />
-
-        <local:GadgetsControl Visibility="{Binding IsGadgetsVisible, Converter={StaticResource VisibilityConverter}}"
+        <local:GadgetsControl Grid.Column="1" Grid.Row="0" Visibility="{Binding IsGadgetsVisible, Converter={StaticResource VisibilityConverter}}"
                               Style="{StaticResource PanelMainWindowStyle}" />
+
+        <local:LoansControl Grid.Column="1" Grid.Row="0" Visibility="{Binding IsLoansVisible, Converter={StaticResource VisibilityConverter}}"
+                            Style="{StaticResource PanelMainWindowStyle}" />
 
     </Grid>
 </Window>

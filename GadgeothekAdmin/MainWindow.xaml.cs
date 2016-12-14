@@ -51,10 +51,9 @@ namespace GadgeothekAdmin
 
         public MainWindow()
         {
-            DataContext = this;
             IsGadgetsVisible = false;
             IsLoansVisible = true;
-
+            DataContext = this;
             InitializeComponent();
         }
 

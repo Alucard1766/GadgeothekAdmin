@@ -10,14 +10,44 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="LoansTemplate">
-                <Grid>
+                <Grid Height="90">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="64"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition MinWidth="100" Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition MinWidth="150" Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition MinWidth="200" Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition MinWidth="200" Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Content="{Binding Gadget.Name}" Grid.Column="1"  VerticalContentAlignment="Center" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding Gadget.Name, StringFormat={}{0}}" Grid.Column="1" Grid.Row="0" />
+                    <TextBlock Text="{Binding Gadget.Condition, StringFormat=Condition: {0}}" Grid.Column="2" Grid.Row="0" />
+
+                    <TextBlock Text="{Binding Id, StringFormat=Id: {0}}" Grid.Column="0" Grid.Row="1" />
+
+                    <TextBlock Text="{Binding Customer.Name, StringFormat=Student: {0}}" Grid.Column="1"  Grid.Row="2" />
+                    <TextBlock Text="{Binding PickupDate, StringFormat=Pickupdate: {0}}" Grid.Column="2"  Grid.Row="2" />
+                    <TextBlock Text="{Binding OverDueDate, StringFormat=Overduedate: {0}}" Grid.Column="3"  Grid.Row="2" />
+
                 </Grid>
             </DataTemplate>
+
+            <Style x:Key="EmptyListStyle" TargetType="ListBox">
+                <Style.Triggers>
+                    <!-- Use ListBox.HasItems instead of Binding -->
+                    <Trigger Property="HasItems" Value="False">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <TextBlock>No items to display</TextBlock>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Appearance\UIElements.xaml" />
                 <ResourceDictionary Source="Appearance\Layouts.xaml" />
@@ -29,6 +59,9 @@
     <Grid>
         <ListBox Name="LoansListBox"
                  ItemsSource="{Binding LoansItem}" 
-                 ItemTemplate="{StaticResource LoansTemplate}" />
+                 ItemTemplate="{StaticResource LoansTemplate}"
+                 Style="{StaticResource EmptyListStyle}">
+        </ListBox>
+
     </Grid>
 </UserControl>
