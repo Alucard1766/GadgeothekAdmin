@@ -5,4 +5,15 @@
     <SolidColorBrush x:Key="MenuBackBrush" Color="{StaticResource MenuBackColor}" />
     <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}" />
 
+    <AlternationConverter x:Key="BackgroundConverter">
+        <SolidColorBrush Color="{StaticResource ListBkgColorBrigth}"/>
+        <SolidColorBrush Color="{StaticResource ListBkgColorDark}"/>
+    </AlternationConverter>
+
+    <AlternationConverter x:Key="AlternateForegroundConverter">
+        <SolidColorBrush>Black</SolidColorBrush>
+        <SolidColorBrush>Black</SolidColorBrush>
+    </AlternationConverter>
+
+
 </ResourceDictionary>

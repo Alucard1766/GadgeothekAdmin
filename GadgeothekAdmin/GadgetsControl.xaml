@@ -4,9 +4,81 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GadgeothekAdmin"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <TextBlock>Gadgets</TextBlock>
-    </StackPanel>
+             d:DesignHeight="300" d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="GadgetTemplate">
+                <Grid Height="90">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="300" Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition MinWidth="150" Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition MinWidth="200" Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition MinWidth="200" Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding Name, StringFormat={}{0}}" Grid.Column="1" Grid.Row="0" />
+                    <TextBlock Text="{Binding Manufacturer, StringFormat= Manufacturer: {0}}" Grid.Column="2" Grid.Row="0" />
+
+                    <TextBlock Text="{Binding InventoryNumber, StringFormat=Inventorynumber: {0}}" Grid.Column="0" Grid.Row="1" />
+
+                    <TextBlock Text="{Binding Price, StringFormat=Price: {0}}" Grid.Column="1"  Grid.Row="2" />
+                    <TextBlock Text="{Binding Condition, StringFormat=Condition: {0}}" Grid.Column="2"  Grid.Row="2" />
+
+                </Grid>
+            </DataTemplate>
+
+            <CollectionViewSource x:Key="SortedGadgets" Source="{Binding MyGadgetsControl.GadgetItems}">
+            </CollectionViewSource>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Appearance\UIElements.xaml" />
+                <ResourceDictionary Source="Appearance\Layouts.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <ComboBox x:Name="comboBoxGadgetSort" Width="150" Height="30" SelectionChanged="Combobox_Sort_Event">
+                <ComboBoxItem>Condition</ComboBoxItem>
+                <ComboBoxItem>Price</ComboBoxItem>
+                <ComboBoxItem>Manufacturer</ComboBoxItem>
+                <ComboBoxItem>Name</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">InventoryNumber</ComboBoxItem>
+            </ComboBox>
+            <Button Style="{StaticResource ButtonSubMenuStyle}"  Click="Button_Sort_Event">
+                <fa:FontAwesome x:Name="btnGadgetsSort" Icon="Sort" />
+            </Button>
+            <Button Style="{StaticResource ButtonSubMenuStyle}"  Click="Button_Add_Event">
+                <fa:FontAwesome x:Name="btnGadgetsAdd" Icon="Plus" />
+            </Button>
+            <Button Style="{StaticResource ButtonSubMenuStyle}" Click="Button_Delete_Event">
+                <fa:FontAwesome x:Name="btnGadgetsDel" Icon="Trash" />
+            </Button>
+        </StackPanel>
+        
+        <ListBox Name="GadgetListBox"
+                 ItemsSource="{Binding Source={StaticResource SortedGadgets}}" 
+                 ItemTemplate="{StaticResource GadgetTemplate}"
+                 ItemContainerStyle="{StaticResource alternatingWithBinding}"
+                 Style="{StaticResource EmptyListStyle}"
+                 AlternationCount="2"
+                 Grid.Row="1">
+        </ListBox>
+
+    </Grid>
 </UserControl>

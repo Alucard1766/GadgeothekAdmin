@@ -3,8 +3,8 @@
                     xmlns:local="clr-namespace:GadgeothekAdmin">
 
     <Style x:Key="ButtonMenuStyle" TargetType="Button">
-        <Setter Property="Width" Value="100" />
         <Setter Property="Height" Value="100" />
+        <Setter Property="Width" Value="100" />
         <Setter Property="Margin" Value="10" />
         <Setter Property="Foreground" Value="{StaticResource HighlightBrush}" />
         <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
@@ -28,6 +28,39 @@
                 <Setter Property="Foreground" Value="{StaticResource MenuBackBrush}" />
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonSubMenuStyle" BasedOn="{StaticResource ButtonMenuStyle}" TargetType="Button">
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Width" Value="50" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+
+    <Style x:Key="EmptyListStyle" TargetType="ListBox">
+        <Style.Triggers>
+            <Trigger Property="HasItems" Value="False">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <TextBlock>No gadgets to display</TextBlock>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="alternatingWithBinding" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Background" 
+              Value="{Binding RelativeSource={RelativeSource Self},
+                     Path=(ItemsControl.AlternationIndex),
+                     Converter={StaticResource BackgroundConverter}}"/>
+
+        <Setter Property="Foreground" 
+              Value="{Binding RelativeSource={RelativeSource Self},
+                     Path=(ItemsControl.AlternationIndex),
+                     Converter={StaticResource AlternateForegroundConverter}}"/>
     </Style>
 
 </ResourceDictionary>

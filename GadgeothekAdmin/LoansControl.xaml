@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GadgeothekAdmin"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="400">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -34,20 +34,6 @@
                 </Grid>
             </DataTemplate>
 
-            <Style x:Key="EmptyListStyle" TargetType="ListBox">
-                <Style.Triggers>
-                    <!-- Use ListBox.HasItems instead of Binding -->
-                    <Trigger Property="HasItems" Value="False">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <TextBlock>No items to display</TextBlock>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Appearance\UIElements.xaml" />
                 <ResourceDictionary Source="Appearance\Layouts.xaml" />
@@ -57,10 +43,20 @@
     </UserControl.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+        </StackPanel>
         <ListBox Name="LoansListBox"
-                 ItemsSource="{Binding LoansItem}" 
+                 ItemsSource="{Binding MyLoansControl.LoansItem}" 
                  ItemTemplate="{StaticResource LoansTemplate}"
-                 Style="{StaticResource EmptyListStyle}">
+                 ItemContainerStyle="{StaticResource alternatingWithBinding}"
+                 AlternationCount="2"
+                 Style="{StaticResource EmptyListStyle}"
+                 Grid.Row="1">
         </ListBox>
 
     </Grid>
