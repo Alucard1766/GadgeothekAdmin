@@ -7,18 +7,26 @@ using System.Configuration;
 using System.Windows;
 using System.Windows.Data;
 using System.ComponentModel;
+using System;
+using System.Globalization;
 
 namespace GadgeothekAdmin
 {
     /// <summary>
     /// Interaction logic for GadgetsControl.xaml
     /// </summary>
-    public partial class GadgetsControl : UserControl
+    public partial class GadgetsControl : UserControl, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<Gadget> GadgetItems { get; set; }
         public int ItemsCount => GadgetItems?.Count ?? 0;
 
-        public ListSortDirection sortHolder;
+        private ListSortDirection _sortHolder;
+        public ListSortDirection SortHolder
+        {
+            get { return _sortHolder; }
+            set { SetProperty(ref _sortHolder, value, nameof(SortHolder)); }
+        }
 
         public GadgetsControl()
         {
@@ -68,7 +76,7 @@ namespace GadgeothekAdmin
             if (selectedItem.Content != null)
             {
                 string sortProperty = selectedItem.Content.ToString();
-                if(sortHolder == ListSortDirection.Ascending)
+                if(SortHolder == ListSortDirection.Ascending)
                 {
                     SortView(sortProperty, ListSortDirection.Descending);
                 }
@@ -106,7 +114,30 @@ namespace GadgeothekAdmin
             CollectionViewSource cvs = FindResource("SortedGadgets") as CollectionViewSource;
             cvs.SortDescriptions.Clear();
             cvs.SortDescriptions.Add(new SortDescription(sortProperty, direction));
-            sortHolder = direction;
+            SortHolder = direction;
+        }
+
+        private void SetProperty<T>(ref T field, T value, string name)
+        {
+            if (!Equals(field, value))
+            {
+                field = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+    }
+
+    public class SortDirectionToIconConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value is ListSortDirection && (ListSortDirection)value == ListSortDirection.Ascending ? "SortDown" : "SortUp";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }
