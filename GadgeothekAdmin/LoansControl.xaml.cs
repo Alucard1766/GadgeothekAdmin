@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Configuration;
+using System;
 
 namespace GadgeothekAdmin
 {
@@ -19,18 +20,35 @@ namespace GadgeothekAdmin
         {
             InitializeComponent();
             //TODO: Update List all seconds or realtime
-            InitializeList();
+            LoansItem = new ObservableCollection<Loan>();
+            FillData();
+            InitializeWebSocket();
         }
 
-        private void InitializeList()
+        private void InitializeWebSocket()
         {
-            LoansItem = new ObservableCollection<Loan>();
+            var url = ConfigurationManager.AppSettings["server"];
+            var client = new ch.hsr.wpf.gadgeothek.websocket.WebSocketClient(url);
+            client.NotificationReceived += (o, e) =>
+            {
+                if (e.Notification.Target == typeof(Loan).Name.ToLower())
+                    FillData();
+            };
+            client.ListenAsync();
+        }
+
+
+
+        private void FillData()
+        {
+            LoansItem.Clear();
             var url = ConfigurationManager.AppSettings["server"];
             var service = new LibraryAdminService(url);
             List<Loan> loans = service.GetAllLoans();
             foreach (Loan l in loans)
             {
-                LoansItem.Add(l);
+                if(l.IsLent)
+                    LoansItem.Add(l);
             }
         }
     }
