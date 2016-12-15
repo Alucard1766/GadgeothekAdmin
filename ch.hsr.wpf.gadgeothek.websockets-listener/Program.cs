@@ -39,7 +39,7 @@ namespace ch.hsr.wpf.gadgeothek.runner
                     // deserialize the json representation of the data object to an object of type Gadget
                     var gadget = e.Notification.DataAs<Gadget>();
                     // now you can use it as usual...
-                    //Console.WriteLine("Details: " + gadget);
+                    Console.WriteLine("Details: " + gadget);
                 }
             };
 
@@ -50,6 +50,7 @@ namespace ch.hsr.wpf.gadgeothek.runner
             // (would stop the background thread, too)
             // press CTRL + C in the console window to stop execution
             Task.WaitAll(bgTask);
+
         }
     }
 }

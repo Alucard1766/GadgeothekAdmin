@@ -2,6 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:GadgeothekAdmin">
 
+    <Style x:Key="TextBlockAddGadget" TargetType="TextBlock">
+        <Setter Property="Margin" Value="0,15,0,0" />
+    </Style>
+
+    <Style x:Key="ComboTextBoxAddGadget" TargetType="Control">
+        <Setter Property="Margin" Value="0,10" />
+    </Style>
+
     <Style x:Key="ButtonMenuStyle" TargetType="Button">
         <Setter Property="Height" Value="100" />
         <Setter Property="Width" Value="100" />
