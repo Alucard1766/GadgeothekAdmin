@@ -82,13 +82,11 @@ namespace GadgeothekAdmin
         private void Button_Add_Event(object sender, RoutedEventArgs e)
         {
             AddGadget window = new AddGadget();
-            if (window.ShowDialog() == true)
+            window.ShowDialog();
+            if(window.myGadget != null)
             {
                 //TODO: Update Model after create new Gadget
-                if (window.myGadget != null)
-                {
-                    
-                }
+                GadgetItems.Add(window.myGadget);
             }
         }
 
