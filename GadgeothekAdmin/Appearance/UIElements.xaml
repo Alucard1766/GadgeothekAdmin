@@ -51,7 +51,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate>
-                            <TextBlock>No gadgets to display</TextBlock>
+                            <TextBlock>No items to display</TextBlock>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
