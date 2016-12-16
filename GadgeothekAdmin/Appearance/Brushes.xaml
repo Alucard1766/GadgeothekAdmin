@@ -4,6 +4,7 @@
 
     <SolidColorBrush x:Key="MenuBackBrush" Color="{StaticResource MenuBackColor}" />
     <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}" />
+    <SolidColorBrush x:Key="TitleBackgroudBrush" Color="{StaticResource TitleBackgroud}" />
 
     <AlternationConverter x:Key="BackgroundConverter">
         <SolidColorBrush Color="{StaticResource ListBkgColorBrigth}"/>

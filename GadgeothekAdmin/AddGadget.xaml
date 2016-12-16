@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:GadgeothekAdmin"
+        Icon="Appearance/favicon.ico"
         mc:Ignorable="d"
-        Title="AddGadget" Height="310" Width="300">
+        Title="AddGadget" Height="310" Width="300" MinWidth="300" MinHeight="310">
 
     <Window.Resources>
         <ResourceDictionary>

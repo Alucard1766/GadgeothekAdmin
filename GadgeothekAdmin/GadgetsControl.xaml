@@ -35,7 +35,7 @@
                 </Grid>
             </DataTemplate>
 
-            <CollectionViewSource x:Key="SortedGadgets" Source="{Binding MyGadgetsControl.GadgetItems}">
+            <CollectionViewSource x:Key="SortedGadgets" Source="{Binding GadgetItems}">
             </CollectionViewSource>
 
             <local:SortDirectionToIconConverter x:Key="MyIconConverter" />
@@ -54,8 +54,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <ComboBox x:Name="comboBoxGadgetSort" Width="150" Height="30" SelectionChanged="Combobox_Sort_Event">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Style="{StaticResource Header}">
+            <TextBlock Text="Gadgets" Style="{StaticResource HeaderTitle}" />
+            <ComboBox x:Name="comboBoxGadgetSort" Width="150" Height="30" SelectionChanged="Combobox_Sort_Event" Margin="0,0,5,0">
                 <ComboBoxItem>Condition</ComboBoxItem>
                 <ComboBoxItem>Price</ComboBoxItem>
                 <ComboBoxItem>Manufacturer</ComboBoxItem>
@@ -63,7 +64,7 @@
                 <ComboBoxItem IsSelected="True">InventoryNumber</ComboBoxItem>
             </ComboBox>
             <Button Style="{StaticResource ButtonSubMenuStyle}"  Click="Button_Sort_Event">
-                <fa:FontAwesome x:Name="btnGadgetsSort" Icon="{Binding  MyGadgetsControl.SortHolder, Converter={StaticResource MyIconConverter}}" />
+                <fa:FontAwesome x:Name="btnGadgetsSort" Icon="{Binding  SortHolder, Converter={StaticResource MyIconConverter}}" />
             </Button>
             <Button Style="{StaticResource ButtonSubMenuStyle}"  Click="Button_Add_Event">
                 <fa:FontAwesome x:Name="btnGadgetsAdd" Icon="Plus" />

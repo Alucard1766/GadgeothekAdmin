@@ -23,6 +23,7 @@ namespace GadgeothekAdmin
             LoansItem = new ObservableCollection<Loan>();
             FillData();
             InitializeWebSocket();
+            DataContext = this;
         }
 
         private void InitializeWebSocket()

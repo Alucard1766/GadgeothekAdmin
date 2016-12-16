@@ -23,8 +23,8 @@ namespace GadgeothekAdmin
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public LoansControl MyLoansControl { get; set; }
-        public GadgetsControl MyGadgetsControl { get; set; }
+        //public LoansControl MyLoansControl { get; set; }
+        //public GadgetsControl MyGadgetsControl { get; set; }
 
         private bool _isLoansVisible;
 
@@ -55,8 +55,8 @@ namespace GadgeothekAdmin
         {
             IsGadgetsVisible = false;
             IsLoansVisible = true;
-            MyLoansControl = new LoansControl();
-            MyGadgetsControl = new GadgetsControl();
+            //MyLoansControl = new LoansControl();
+            //MyGadgetsControl = new GadgetsControl();
             DataContext = this;
             InitializeComponent();
         }

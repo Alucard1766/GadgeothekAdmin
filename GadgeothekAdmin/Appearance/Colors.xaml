@@ -6,5 +6,6 @@
     <Color x:Key="HighlightColor" A="255" R="27" G="161" B="226" />
     <Color x:Key="ListBkgColorDark" A="255" R="234" G="236" B="239" />
     <Color x:Key="ListBkgColorBrigth" A="255" R="255" G="255" B="255" />
+    <Color x:Key="TitleBackgroud" A="255" R="240" G="240" B="240" />
 
 </ResourceDictionary>

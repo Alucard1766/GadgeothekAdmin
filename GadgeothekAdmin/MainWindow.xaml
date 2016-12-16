@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GadgeothekAdmin"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
+        Icon="Appearance/favicon.ico"
         mc:Ignorable="d"
         Title="Gadgeothek Admin" MinHeight="350" MinWidth="900" WindowState="Maximized">
 
@@ -36,12 +37,18 @@
                 <fa:FontAwesome x:Name="btnMenuLoans" Icon="Exchange" />
             </Button>
         </StackPanel>
+        <Grid Visibility="{Binding IsGadgetsVisible, Converter={StaticResource VisibilityConverter}}" Grid.Column="1" Grid.Row="0" >
+            <local:GadgetsControl Style="{StaticResource PanelMainWindowStyle}" />
+        </Grid>
 
-        <local:GadgetsControl Grid.Column="1" Grid.Row="0" Visibility="{Binding IsGadgetsVisible, Converter={StaticResource VisibilityConverter}}"
-                              Style="{StaticResource PanelMainWindowStyle}" />
 
-        <local:LoansControl Grid.Column="1" Grid.Row="0" Visibility="{Binding IsLoansVisible, Converter={StaticResource VisibilityConverter}}"
-                            Style="{StaticResource PanelMainWindowStyle}" />
+        <Grid Visibility="{Binding IsLoansVisible, Converter={StaticResource VisibilityConverter}}" Grid.Column="1" Grid.Row="0">
+            <local:LoansControl Style="{StaticResource PanelMainWindowStyle}" />
+        </Grid>
+
+        
+
+        
 
     </Grid>
 </Window>

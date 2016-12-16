@@ -32,6 +32,7 @@ namespace GadgeothekAdmin
         {
             InitializeList();
             InitializeComponent();
+            DataContext = this;
         }
 
         private void InitializeList()
@@ -48,7 +49,7 @@ namespace GadgeothekAdmin
 
         private void Button_Delete_Event(object sender, RoutedEventArgs e)
         {
-            if (GadgetListBox.SelectedIndex > 0)
+            if (GadgetListBox.SelectedIndex >= 0)
             {
                 Gadget selectedGadget = (Gadget)GadgetListBox.SelectedValue;
                 string messageBoxText = "Do you want to delete "+selectedGadget.ToString()+" ?";

@@ -6,11 +6,12 @@
     <Style x:Key="PanelMenuStyle" TargetType="StackPanel">
         <Setter Property="Grid.Column" Value="0"/>
         <Setter Property="Background" Value="{StaticResource MenuBackBrush}" />
+        <Setter Property="Margin" Value="0,20,0,20" />
     </Style>
 
     <Style x:Key="PanelMainWindowStyle" TargetType="UserControl">
         <Setter Property="Grid.Column" Value="1"/>
-        <Setter Property="Margin" Value="30, 30, 0, 0" />
+        <Setter Property="Margin" Value="20, 20, 0, 0" />
     </Style>
 
 </ResourceDictionary>

@@ -48,10 +48,11 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Style="{StaticResource Header}">
+            <TextBlock Text="Loans" Style="{StaticResource HeaderTitle}" />
         </StackPanel>
         <ListBox Name="LoansListBox"
-                 ItemsSource="{Binding MyLoansControl.LoansItem}" 
+                 ItemsSource="{Binding LoansItem}" 
                  ItemTemplate="{StaticResource LoansTemplate}"
                  ItemContainerStyle="{StaticResource alternatingWithBinding}"
                  AlternationCount="2"
