@@ -49,24 +49,25 @@ namespace GadgeothekAdmin
 
         private void Button_Delete_Event(object sender, RoutedEventArgs e)
         {
-            if (GadgetListBox.SelectedIndex >= 0)
+            if (GadgetListBox.SelectedIndex < 0)
             {
-                Gadget selectedGadget = (Gadget)GadgetListBox.SelectedValue;
-                string messageBoxText = "Do you want to delete "+selectedGadget.ToString()+" ?";
+                return;
+            }
 
-                if(MessageBox.Show(messageBoxText, "Security", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            Gadget selectedGadget = (Gadget)GadgetListBox.SelectedValue;
+            string messageBoxText = "Do you want to delete " + selectedGadget.ToString() + " ?";
+
+            if (MessageBox.Show(messageBoxText, "Security", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                var url = ConfigurationManager.AppSettings["server"];
+                var service = new LibraryAdminService(url);
+                if (!service.DeleteGadget(selectedGadget))
                 {
-                    var url = ConfigurationManager.AppSettings["server"];
-                    var service = new LibraryAdminService(url);
-                    if(!service.DeleteGadget(selectedGadget))
-                    {
-                        System.Console.WriteLine("Could not delete Gadget "+ GadgetListBox.SelectedValue.ToString());
-                    }
-                    else
-                    {
-                        bool ret = GadgetItems.Remove(selectedGadget);
-                        //TODO: Update Model after delete Gadget
-                    }
+                    System.Console.WriteLine("Could not delete Gadget " + GadgetListBox.SelectedValue.ToString());
+                }
+                else
+                {
+                    bool ret = GadgetItems.Remove(selectedGadget);
                 }
             }
         }
@@ -77,14 +78,7 @@ namespace GadgeothekAdmin
             if (selectedItem.Content != null)
             {
                 string sortProperty = selectedItem.Content.ToString();
-                if(SortHolder == ListSortDirection.Ascending)
-                {
-                    SortView(sortProperty, ListSortDirection.Descending);
-                }
-                else
-                {
-                    SortView(sortProperty, ListSortDirection.Ascending);
-                }
+                SortView(sortProperty, SortHolder == ListSortDirection.Ascending ? ListSortDirection.Descending : ListSortDirection.Ascending);
             }
         }
 
@@ -94,7 +88,6 @@ namespace GadgeothekAdmin
             window.ShowDialog();
             if(window.myGadget != null)
             {
-                //TODO: Update Model after create new Gadget
                 GadgetItems.Add(window.myGadget);
             }
         }
